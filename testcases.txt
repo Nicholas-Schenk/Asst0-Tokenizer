@@ -1,0 +1,265 @@
+Testcases:
+
+Section 1, Words (makes sure that words, aka alphanumeric sequences, can be handled on their own):
+
+input:			output:
+
+"abc"			word "abc"
+
+"AbC"			word "AbC"
+
+"a1231"			word "a1231"
+
+"C0MP14IN"		word "C0MP14IN"
+
+
+Section 2, Numbers (makes sure that each type of number can be handled correctly on their own):
+
+input:			output:
+
+"0"			decimal integer "0"
+
+"13"			decimal integer "13"
+
+"12456146233"		decimal integer"12456146233"
+
+"012357"		octal integer "012357"
+
+"08982"			decimal integer "08982"
+
+"00"			octal integer "00"
+
+"001"			octal integer "001"
+
+"0x180"			hexadecimal integer "0x180"
+
+"0X180"			hexadecimal integer "0X180"
+
+"0xy"			integer "0"
+			word "xy"
+
+"12.5"			floating-point "12.5"
+
+"01234.13"		floating-point "01234.13"
+
+"982.0e-10"		floating-point "982.0e-10"
+
+"176.123e10"		floating-point "176.123e10"
+
+"199.166666e+10"	floating-point "199.166666e+10"
+
+
+Section 3, C operators (makes sure that each operator is correctly handled on its own):
+
+input:			output:
+"("			left parenthesis "("
+
+")"			right parenthesis ")"
+
+"["			left bracket "["
+
+"]"			right bracket "]"
+
+"."			structure member "."
+
+"->"			structure pointer "->"
+
+"sizeof"		sizeof operator "sizeof"
+
+","			comma ","
+
+"!"			negate "!"
+
+"~"			1s complement "~"
+
+">>"			shift right ">>"
+
+"<<"			shift left "<<"
+
+"^"			bitwise XOR "^"
+
+"|"			bitwise OR "|"
+
+"++"			increment "++"
+
+"--"			decrement "--"
+
+"+"			addition "+"
+
+"/"			division "/"
+
+"||"			logical OR "||"
+
+"&&"			logical AND "&&"
+
+"?"			conditional true "?"
+
+":"			conditional false ":"
+
+"=="			equality test "=="
+
+"!=" 			inequality test "!="
+
+"<"			less than test "<"
+
+">"			greater than test ">"
+
+"<="			less than or equal test "<="
+
+">="			greater than or equal test ">="
+ 
+"="			assignment "="
+
+"+="			plus equals "+="
+
+"-="			minus equals "-="
+
+"*="			times equals "*="
+
+"/="			divide equals "/="
+
+"%="			mod equals "%="
+
+">>="			shift right equals ">>="
+
+"<<="			shift left equals "<<="
+
+"&="			bitwise AND equals "&="
+
+"^="			bitwise XOR equals "^="
+
+"|="			bitwise OR equals "|="
+
+"&"			AND/address operator "&"
+
+"-"			minus/subtract operator "-"
+
+"*"			multiply/dereference operator "*"				
+
+
+Section 4, Combinations (combinations of various operators, words, numbers) :
+
+input:									output:
+
+"0xy"									decimal integer "0"
+									word "xy"
+
+"0x124qwerty"								hexadecimal integer "0x1234"
+									word "qwerty"
+
+"282.98e--10"								floating-point "282.98"
+									word "e"
+									decrement "--"
+									decimal integer "10"
+
+"today is a beautiful day"						word "today"
+									word "is"
+									word "a"
+									word "beautiful"
+									word "day"
+
+
+"07770x123"								octal integer "07770"
+									word "x123"
+
+"0x4356abdc 0777 []"							hexadecimal integer "0x4356abdc"
+									octal integer "0777"
+									left bracket "["
+									right bracket "]"
+
+"+++++=+-----=-->>=<<=&=^=|=&-* =+-"					increment "++"
+									increment "++"
+									plus equals "+="
+									addition "+"
+									decrement "--"
+									decrement "--"
+									minus equals "-="
+									decrement "--"
+									shift right equals ">>="
+									shift left equals "<<="
+									bitwise AND EQUALS "&="
+									bitwise XOR equals "^="
+									bitwise OR equals "|="
+									AND/address operator "&"
+									minus/subtract operator "-"
+									multiply/dereference operator "*"
+									assignement "="
+									addition "+"
+									minus/subtract operator "-" 
+
+"++Hello++12341.13e10"							increment "++"
+									word "Hello"
+									increment "++"
+									floating-point "12341.13e10"
+
+"notahex0x123425 notadecimal913 notanoctal077 notreallyafloat223.425"	word "notahex0x123425"
+									word "notadecimal913"
+									word "notanoctal077"
+									word "notreallyafloat223"
+									structure member "."
+									decimal integer "425"
+
+"newline 								word "newline"
+test"									word "test"
+
+"Hello// you can not see this"						word "Hello"
+
+"Hello, my name is /* John */ Terry"					word "Hello"
+									comma ","
+									word "my"
+									word "name"
+									word "is"
+									word "Terry"
+
+"Hello, my name is // John 						word "Hello"
+Terry"									comma ","
+									word "my"
+									word "name"
+									word "is"
+									word "Terry"
+
+"Hello, my name is /* John 						word "Hello"
+Terry*/ Joe"								comma ","
+									word "my"
+									word "name"
+									word "is"
+									word "Joe"
+
+"KeywordTest auto const double float int short struct unsigned break	keyword "double"
+continue else for long signed switch void case default enum goto	keyword "float" 
+register sizeof typedef volatile char do extern if return static	keyword "int" 
+union while"								keyword "short" 
+									keyword "struct" 
+									keyword "unsigned"		
+									keyword "break" 
+									keyword "continue" 
+									keyword "else"
+									keyword "for" 	
+									keyword "long"
+									keyword "signed" 
+									keyword "switch" 
+									keyword "void" 
+									keyword "case" 
+									keyword "default" 
+									keyword "enum"
+									keyword "goto" 
+									keyword "register" 
+									sizeof operator "sizeof" 
+									keyword "typedef" 
+									keyword "volatile" 
+									keyword "char" 
+									keyword "do" 
+									keyword "extern" 
+									keyword "if" 
+									keyword "return" 		
+									keyword "static" 
+									keyword "union" 
+									keyword "while"
+
+
+"KeywordTest2 autoconstdoublefloatintshortstructunsignedbreak"		word "KeywordTest2"
+									word "autoconstdoublefloatintshortstructunsignedbreak"				
+
+"'Test string'"								string 'Test string'
+
+'"Test string"'								string "Test string"
